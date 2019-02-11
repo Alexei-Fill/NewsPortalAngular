@@ -1,0 +1,18 @@
+<div class="roof">
+  <b style="margin-bottom: 20px;">newsManagment</b>
+  <b style="margin-left: 65%;"><a href="?lang=ru" style="margin: 15px;">Russian</a> <a href="?lang=en"
+                                                                                       style="margin: 15px;">English</a></b>
+      <a href="/showLogin"> </a> / <a href="/showReg"> </a>
+
+    <form action="/logout" method="post" style="float: right;">
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+      <input value="signOut" type="submit">
+    </form>
+
+</div>
+<div class="smenu">
+  <h2 align="center">news</h2>
+  <h4><a  routerLink="/news-list">newsList</a></h4>
+  <h4><a  routerLink="/news-add">newsList</a></h4>
+</div>
+<router-outlet></router-outlet>

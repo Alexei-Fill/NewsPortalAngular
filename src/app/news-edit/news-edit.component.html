@@ -1,0 +1,19 @@
+
+<div >
+  <h2>News Update</h2>
+  <div >
+    <label>News title:
+      <input [(ngModel)]="newsData.title"/>
+    </label><br>
+    <label>News brief:
+      <input [(ngModel)]="newsData.brief"/>
+    </label><br>
+    <label>News datw:
+      <input [(ngModel)]="newsData.date"/>
+    </label><br>
+    <label>News content:
+      <input [(ngModel)]="newsData.content"/>
+    </label><br>
+  </div>
+  <button (click)="updateNews()">Update</button>
+</div>

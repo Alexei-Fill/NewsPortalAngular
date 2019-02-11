@@ -1,0 +1,20 @@
+
+<h2>Product List</h2>
+
+
+<div class="content" align="center" *ngFor="let n of newsList; let i=index;">
+  <b> title </b>
+  <span style="padding-left: 20px"> {{n.title}} </span>
+  <span style="float: right;"> <i><u>{{n.date}}</u></i></span>
+  <h5>{{n.brief}}</h5>
+  <span style="float: right;">
+    <a routerLink="/newsS/{{n.id}}"> View</a>
+    <a routerLink="/news-edit/{{n.id}}"> Edit</a>
+
+            <input type="checkbox" value="{{n.id}}"  (click)="check(n.id)" />
+       </span>
+  <h5></h5>
+
+</div>
+<button style="float: right;" title="delete news"
+        (click)="delete()">x</button>

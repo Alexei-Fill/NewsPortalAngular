@@ -1,0 +1,23 @@
+
+<div *ngIf="news" >
+  title <p>{{news.title}}</p>
+  <h6></h6>
+  brief
+  <p>{{news.brief}}</p>
+  <h6></h6>
+  date
+  <p>{{news.date}}</p>
+  <h6></h6>
+  content
+  <p>{{news.content}}</p>
+  <h6></h6>
+  <div>
+    <button routerLink="/news-edit/{{news.id}}">
+      Edit
+    </button>
+    <button (click)="delete(news.id)">
+      delete
+    </button>
+  </div>
+</div>
+

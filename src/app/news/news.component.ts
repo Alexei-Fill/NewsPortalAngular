@@ -21,7 +21,8 @@ export class NewsComponent implements OnInit {
   }
 
   delete(id) {
-    this.rest.deleteNews(id)
+    const deleteNews: number[] = [id];
+    this.rest.deleteNews(deleteNews)
       .subscribe(res => {
         this.router.navigate(['/news-list']);
         }, (err) => {

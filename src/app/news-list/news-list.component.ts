@@ -21,7 +21,6 @@ export class NewsListComponent implements OnInit {
   getNewsList() {
     this.newsList = [];
     this.rest.getNewsList().subscribe((data: {}) => {
-      console.log(data);
       this.newsList = data;
     });
   }
@@ -33,15 +32,12 @@ export class NewsListComponent implements OnInit {
       const index = this.deletedNews.indexOf(id, 0);
       this.deletedNews.splice(index, 1);
     }
-    console.log(this.deletedNews);
   }
 
   delete() {
-    for (var i = 0; i < this.deletedNews.length ; i++) {
-      this.rest.deleteNews(this.deletedNews[i])
+         this.rest.deleteNews(this.deletedNews)
         .subscribe(res => {
-          const index = this.deletedNews.indexOf(this.deletedNews[i], 0);
-          this.deletedNews.splice(index, 1);
+          this.deletedNews = [];
           this.getNewsList();
           }, (err) => {
             console.log(err);
@@ -49,6 +45,5 @@ export class NewsListComponent implements OnInit {
         );
     }
 
-  }
-
 }
+

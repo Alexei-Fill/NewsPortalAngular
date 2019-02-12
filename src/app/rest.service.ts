@@ -48,9 +48,15 @@ export class RestService {
     );
   }
 
-  deleteNews(id): Observable<any> {
-    return this.http.delete(endpoint + 'newsR/' + id,   httpOptions).pipe(
-      tap(_ => console.log(`deleted news id=${id.toString()}`)),
+  deleteNews(deletedNews): Observable<any> {
+    return this.http.request('delete' , endpoint + 'newsR',   {
+      body: deletedNews,
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    })
+      .pipe(
+      tap(_ => console.log(`deleted news id=${deletedNews.toString()}`)),
       catchError(this.handleError<any>('deleteNews'))
     );
   }

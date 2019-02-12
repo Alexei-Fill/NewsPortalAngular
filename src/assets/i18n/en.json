@@ -1,0 +1,21 @@
+{
+  "key.title" : "Title news",
+  "key.brief" : "Brief",
+  "key.content" : "Content",
+  "key.date" : "Date",
+  "key.view" : "View",
+  "key.delete" : "Delete",
+  "key.addNews" : "Add News",
+  "key.newsList" : "News list",
+  "key.newsManagment" : "News Management",
+  "key.edit" : "Edit",
+  "key.newsView" : "News View",
+  "key.login" : "Login",
+  "key.password" : "Password",
+  "key.signIn" : "Sign in",
+  "key.youLoggedAs" : "You are logged in as :",
+  "key.signOut" : "Sign out",
+  "key.registration" : "Registration",
+  "key.news" : "News",
+  "key.forbidden" : "403 Forbidden!"
+}

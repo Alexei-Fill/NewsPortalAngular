@@ -1,0 +1,21 @@
+{
+  "key.title" : "Название новости",
+  "key.brief" : "Краткое описание",
+  "key.content" : "Содержание",
+  "key.date" : "Дата",
+  "key.view" : "Просмотр",
+  "key.delete" : "Удалить",
+  "key.addNews" : "Добавить новость",
+  "key.newsList" : "Список новостей",
+  "key.newsManagment" : "Управление новостями",
+  "key.edit" : "Править",
+  "key.newsView" : "Просмотр новости",
+  "key.login" : "Логин",
+  "key.password" : "Пароль",
+  "key.signIn" : "Войти",
+  "key.youLoggedAs" : "Вы вошли как:",
+  "key.signOut" : "Выход",
+  "key.registration" : "Регистрация",
+  "key.news" : "Новости",
+  "key.forbidden" : "403 Запрещено!"
+}

@@ -1,19 +1,18 @@
 
 <div>
-  <h2>News Add</h2>
   <div>
-    <label>News title:
+    <label>{{ 'key.title' | translate }}
       <input [(ngModel)]="newsData.title"/>
     </label><br>
-    <label>News brief:
+    <label>{{ 'key.brief' | translate }}
       <input [(ngModel)]="newsData.brief"/>
     </label><br>
-    <label>News datw:
+    <label>{{ 'key.date' | translate }}
       <input [(ngModel)]="newsData.date"/>
     </label><br>
-    <label>News content:
+    <label>{{ 'key.content' | translate }}
       <input [(ngModel)]="newsData.content"/>
     </label><br>
   </div>
-  <button (click)="addNews()">Save</button>
+  <button (click)="addNews()">{{ 'key.addNews' | translate }}</button>
 </div>

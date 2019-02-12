@@ -1,22 +1,22 @@
 
 <div *ngIf="news" >
-  title <p>{{news.title}}</p>
+  {{ 'key.title' | translate }} <p>{{news.title}}</p>
   <h6></h6>
-  brief
+  {{ 'key.brief' | translate }}
   <p>{{news.brief}}</p>
   <h6></h6>
-  date
+  {{ 'key.date' | translate }}
   <p>{{news.date}}</p>
   <h6></h6>
-  content
+  {{ 'key.content' | translate }}
   <p>{{news.content}}</p>
   <h6></h6>
   <div>
     <button routerLink="/news-edit/{{news.id}}">
-      Edit
+      {{ 'key.edit' | translate }}
     </button>
     <button (click)="delete(news.id)">
-      delete
+      {{ 'key.delete' | translate }}
     </button>
   </div>
 </div>

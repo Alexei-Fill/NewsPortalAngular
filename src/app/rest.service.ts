@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {map, catchError, tap} from 'rxjs/operators';
 
-const endpoint = 'http://localhost:8786/';
+const endpoint = 'http://localhost:8786/rest/news';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -24,32 +24,32 @@ export class RestService {
 
 
   getNewsList(): Observable<any> {
-    return this.http.get(endpoint + 'newsR').pipe(
+    return this.http.get(endpoint).pipe(
       map(this.extractData));
   }
 
   getNews(id): Observable<any> {
-    return this.http.get(endpoint + 'newsR/' + id).pipe(
+    return this.http.get(endpoint + '/' + id).pipe(
       map(this.extractData));
   }
 
   addNews(news): Observable<any> {
     console.log(news);
-    return this.http.post<any>(endpoint + 'newsR', JSON.stringify(news), httpOptions).pipe(
-      tap((product) => console.log(`added news w/ id=${news.id}`)),
+    return this.http.post<any>(endpoint, JSON.stringify(news), httpOptions).pipe(
+      tap((product) => console.log(`added news id=${news.id}`)),
       catchError(this.handleError<any>('addNews'))
     );
   }
 
   updateProduct( news): Observable<any> {
-    return this.http.put(endpoint + 'newsR', JSON.stringify(news), httpOptions).pipe(
+    return this.http.put(endpoint , JSON.stringify(news), httpOptions).pipe(
       tap(_ => console.log(`updated news id=${news.id}`)),
       catchError(this.handleError<any>('updateNews'))
     );
   }
 
   deleteNews(deletedNews): Observable<any> {
-    return this.http.request('delete' , endpoint + 'newsR',   {
+    return this.http.request('delete' , endpoint ,   {
       body: deletedNews,
       headers: new HttpHeaders({
         'Content-Type':  'application/json'

@@ -1,0 +1,8 @@
+
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+  <h3>login</h3>
+  <input [(ngModel)]="userData.name"/>
+  <h3>password</h3>
+  <input [(ngModel)]="userData.password" type="password"/>
+  <div style = "margin-bottom:10px;"></div>
+<button (click)="login()"> login</button>

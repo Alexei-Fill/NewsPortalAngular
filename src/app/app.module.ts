@@ -11,6 +11,8 @@ import { NewsComponent } from './news/news.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { NewsEditComponent } from './news-edit/news-edit.component';
 import { NewsAddComponent } from './news-add/news-add.component';
+import { LoginComponent } from './login/login.component';
+import {CookieService} from 'ngx-cookie-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,6 +39,11 @@ const appRoutes: Routes = [
     component: NewsEditComponent,
     data: { title: 'News Edit' }
   },
+  {
+    path: 'login-rest',
+    component: LoginComponent,
+    data: { title: 'Login' }
+  },
   { path: '',
     redirectTo: '/news-list',
     pathMatch: 'full'
@@ -49,7 +56,8 @@ const appRoutes: Routes = [
     NewsComponent,
     NewsListComponent,
     NewsEditComponent,
-    NewsAddComponent
+    NewsAddComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -64,7 +72,7 @@ const appRoutes: Routes = [
       }
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

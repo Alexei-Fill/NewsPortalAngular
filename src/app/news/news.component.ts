@@ -15,7 +15,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.rest.getNews(this.route.snapshot.params['id']).subscribe((data: {}) => {
-      console.log(data);
       this.news = data;
     });
   }

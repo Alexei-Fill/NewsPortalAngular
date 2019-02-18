@@ -1,18 +1,22 @@
 <div class="roof">
   <b style="margin-bottom: 20px;">{{ 'key.newsManagment' | translate }}</b>
-  <b style="margin-left: 65%;"><u><a  (click)="setRuLang()" style="margin: 15px; color:blue; cursor: pointer; ">Russian</a> <a (click)="setEnLang()"
-                                                                                       style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
-      <a href="http://localhost:8786/showLogin">{{ 'key.login' | translate }} </a> / <a href="http://localhost:8786/showReg">{{ 'key.registration' | translate }} </a>
+  <b style="margin-left: 65%;"><u>
+    <a (click)="setRuLang()"
+                                     style="margin: 15px; color:blue; cursor: pointer; ">Russian</a>
+    <a (click)="setEnLang()"
+       style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
 
-    <form action="/logout" method="post" style="float: right;">
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-      <input value="{{ 'key.signOut' | translate }}" type="submit">
-    </form>
+
+  <a routerLink="/login-rest" *ngIf="currentUser">{{currentUser}}</a>
+  <a routerLink="/login-rest" *ngIf="currentUser === null">{{ 'key.login' | translate }} </a>
+
+  <a (click)="logOut()"
+     style="margin: 15px; color:blue; cursor: pointer;">Sign out</a>
 
 </div>
 <div class="smenu">
   <h2 align="center">{{ 'key.news' | translate }}</h2>
-  <h4><a  routerLink="/news-list">{{ 'key.newsList' | translate }}</a></h4>
-  <h4><a  routerLink="/news-add">{{ 'key.addNews' | translate }}</a></h4>
+  <h4><a routerLink="/news-list">{{ 'key.newsList' | translate }}</a></h4>
+  <h4><a routerLink="/news-add">{{ 'key.addNews' | translate }}</a></h4>
 </div>
 <router-outlet></router-outlet>

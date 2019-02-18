@@ -6,8 +6,10 @@ import {map, catchError, tap} from 'rxjs/operators';
 const endpoint = 'http://localhost:8786/rest/news';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
+    'Content-Type':  'application/json',
+  }),
+  withCredentials: true,
+  crossDomain: true
 };
 
 @Injectable({
@@ -36,7 +38,7 @@ export class RestService {
   addNews(news): Observable<any> {
     console.log(news);
     return this.http.post<any>(endpoint, JSON.stringify(news), httpOptions).pipe(
-      tap((product) => console.log(`added news id=${news.id}`)),
+      tap(() => console.log(`added news id=${news.id}`)),
       catchError(this.handleError<any>('addNews'))
     );
   }
@@ -58,6 +60,20 @@ export class RestService {
       .pipe(
       tap(_ => console.log(`deleted news id=${deletedNews.toString()}`)),
       catchError(this.handleError<any>('deleteNews'))
+    );
+  }
+
+  login(user): Observable<any> {
+    return this.http.post<any>('http://localhost:8786/login', JSON.stringify(user), httpOptions).pipe(
+      tap(() => console.log(`susss ${user}`)),
+      catchError(this.handleError<any>('login')),
+    );
+  }
+
+  logout(): Observable<any> {
+    return this.http.post<any>('http://localhost:8786/logout',  httpOptions).pipe(
+      tap(() => console.log(`susss `)),
+      catchError(this.handleError<any>('logout')),
     );
   }
 

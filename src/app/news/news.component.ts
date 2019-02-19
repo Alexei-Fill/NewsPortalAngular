@@ -8,8 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-
   news: any;
+  currentUser: string;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -17,6 +17,7 @@ export class NewsComponent implements OnInit {
     this.rest.getNews(this.route.snapshot.params['id']).subscribe((data: {}) => {
       this.news = data;
     });
+    this.currentUser = sessionStorage.getItem('currentUser');
   }
 
   delete(id) {

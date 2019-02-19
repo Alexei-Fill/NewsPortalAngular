@@ -24,7 +24,6 @@ export class RestService {
     return body || { };
   }
 
-
   getNewsList(): Observable<any> {
     return this.http.get(endpoint).pipe(
       map(this.extractData));
@@ -36,7 +35,6 @@ export class RestService {
   }
 
   addNews(news): Observable<any> {
-    console.log(news);
     return this.http.post<any>(endpoint, JSON.stringify(news), httpOptions).pipe(
       tap(() => console.log(`added news id=${news.id}`)),
       catchError(this.handleError<any>('addNews'))
@@ -55,7 +53,8 @@ export class RestService {
       body: deletedNews,
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
-      })
+      }),
+      withCredentials: true
     })
       .pipe(
       tap(_ => console.log(`deleted news id=${deletedNews.toString()}`)),
@@ -65,14 +64,14 @@ export class RestService {
 
   login(user): Observable<any> {
     return this.http.post<any>('http://localhost:8786/login', JSON.stringify(user), httpOptions).pipe(
-      tap(() => console.log(`susss ${user}`)),
+      tap(),
       catchError(this.handleError<any>('login')),
     );
   }
 
   logout(): Observable<any> {
     return this.http.post<any>('http://localhost:8786/logout',  httpOptions).pipe(
-      tap(() => console.log(`susss `)),
+      tap(),
       catchError(this.handleError<any>('logout')),
     );
   }

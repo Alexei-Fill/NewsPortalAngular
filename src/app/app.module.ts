@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   {
     path: 'news-list',
     component: NewsListComponent,
-    data: { title: 'News List' }
+    data: { title: 'News List'}
   },
   {
     path: 'newsS/:id',

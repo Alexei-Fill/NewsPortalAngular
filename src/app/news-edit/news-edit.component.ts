@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {RestService} from '../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-news-edit',
@@ -11,7 +12,7 @@ export class NewsEditComponent implements OnInit {
 
   @Input() newsData: any = {title: '', brief: '', content: '', date: '0000-00-00'};
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.rest.getNews(this.route.snapshot.params['id']).subscribe((data: {}) => {
@@ -27,5 +28,7 @@ export class NewsEditComponent implements OnInit {
     });
   }
 
-
+  isAuthenticated(): boolean {
+    return this.cookieService.check('x-auth-token');
+  }
 }

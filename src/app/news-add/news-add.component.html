@@ -1,5 +1,5 @@
 
-<div>
+<div >
   <div>
     <label>{{ 'key.title' | translate }}
       <input [(ngModel)]="newsData.title"/>
@@ -15,4 +15,10 @@
     </label><br>
   </div>
   <button (click)="addNews()">{{ 'key.addNews' | translate }}</button>
+</div>
+<div *ngIf="!isAuthenticated()">
+  <h2>Sorry, you do not have permission to view this page.</h2>
+
+  Click <a routerLink="/news-list" >here</a>
+  to go back to the Homepage.
 </div>

@@ -7,16 +7,16 @@
        style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
 
 
-  <a routerLink="/login-rest" *ngIf="currentUser">{{currentUser}}</a>
+  <a *ngIf="currentUser">{{currentUser}}</a>
   <a routerLink="/login-rest" *ngIf="currentUser === null">{{ 'key.login' | translate }} </a>
 
   <a (click)="logOut()"
-     style="margin: 15px; color:blue; cursor: pointer;">Sign out</a>
+     style="margin: 15px; color:blue; cursor: pointer;"  *ngIf="currentUser">Sign out</a>
 
 </div>
 <div class="smenu">
   <h2 align="center">{{ 'key.news' | translate }}</h2>
   <h4><a routerLink="/news-list">{{ 'key.newsList' | translate }}</a></h4>
-  <h4><a routerLink="/news-add">{{ 'key.addNews' | translate }}</a></h4>
+  <h4 *ngIf="currentUser"><a routerLink="/news-add">{{ 'key.addNews' | translate }}</a></h4>
 </div>
 <router-outlet></router-outlet>

@@ -12,10 +12,12 @@ export class NewsListComponent implements OnInit {
 
   newsList: any = [];
   deletedNews: number[] = [];
+  currentUser: string;
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getNewsList();
+    this.currentUser = sessionStorage.getItem('currentUser');
   }
 
   getNewsList() {

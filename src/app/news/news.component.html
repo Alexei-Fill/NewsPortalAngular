@@ -11,8 +11,8 @@
   {{ 'key.content' | translate }}
   <p>{{news.content}}</p>
   <h6></h6>
-  <div>
-    <button routerLink="/news-edit/{{news.id}}">
+  <div *ngIf="currentUser">
+    <button routerLink="/news-edit/{{news.id}}" >
       {{ 'key.edit' | translate }}
     </button>
     <button (click)="delete(news.id)">

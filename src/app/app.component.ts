@@ -12,42 +12,42 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class AppComponent {
   title = 'NewsApp';
-  param = {value: 'world'};
   translate: TranslateService;
   currentUser: string;
 
-
   constructor(translate: TranslateService, private router: Router, public rest: RestService, public cookieService: CookieService) {
-    this.currentUser = sessionStorage.getItem('currentUser');
-    console.log(this.currentUser);
-    // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('en');
     this.translate = translate;
-  }
+    if (this.isAuthenticated()) {
+      this.currentUser = sessionStorage.getItem('currentUser');
+    } else {
+      sessionStorage.removeItem('currentUser');
+      this.currentUser = null;
+      }
+    }
 
   setRuLang() {
     this.translate.use('ru').subscribe(res => {
-      this.router.navigate([this.router.getCurrentNavigation()]);
     });
   }
 
   setEnLang() {
     this.translate.use('en').subscribe(res => {
-      this.router.navigate([this.router.getCurrentNavigation()]);
     });
   }
 
   logOut() {
     this.rest.logout().subscribe((result) => {
-      sessionStorage.removeItem('currentUser');
-      this.cookieService.delete('auth-token');
+      this.cookieService.delete('x-auth-token');
       this.router.navigate(['/news-list']);
       window.location.reload();
     }, (err) => {
       console.log(err);
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.cookieService.check('x-auth-token');
   }
 }

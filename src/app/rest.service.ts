@@ -63,7 +63,7 @@ export class RestService {
   }
 
   login(user): Observable<any> {
-    return this.http.post<any>('http://localhost:8786/login', JSON.stringify(user), httpOptions).pipe(
+    return this.http.post<any>('http://localhost:8786/rest/login', JSON.stringify(user), httpOptions).pipe(
       tap(),
       catchError(this.handleError<any>('login')),
     );

@@ -22,7 +22,7 @@ export class NewsEditComponent implements OnInit {
 
   updateNews() {
     this.rest.updateProduct( this.newsData).subscribe((result) => {
-      this.router.navigate(['/newsS/' + result.id]);
+      this.router.navigate(['/news-list']);
     }, (err) => {
       console.log(err);
     });

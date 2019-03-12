@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {map, catchError, tap} from 'rxjs/operators';
+import {CookieService} from 'ngx-cookie-service';
 
-const endpoint = 'http://localhost:8786/rest/news';
+const endpoint = 'http://localhost:8282/EjEx2/api/rest/news';
+// const endpoint = 'http://localhost:8786/rest/news';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type':  'application/json'
   }),
   withCredentials: true,
   crossDomain: true
@@ -17,7 +19,7 @@ const httpOptions = {
 })
 export class RestService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   private extractData(res: Response) {
     const body = res;
@@ -63,14 +65,16 @@ export class RestService {
   }
 
   login(user): Observable<any> {
-    return this.http.post<any>('http://localhost:8786/rest/login', JSON.stringify(user), httpOptions).pipe(
+    // return this.http.post<any>('http://localhost:8786/rest/login', JSON.stringify(user), httpOptions).pipe(
+    return this.http.post<any>('http://localhost:8282/EjEx2/api/authentication', JSON.stringify(user), httpOptions).pipe(
       tap(),
       catchError(this.handleError<any>('login')),
     );
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>('http://localhost:8786/logout',  httpOptions).pipe(
+    return this.http.post<any>('http://localhost:8282/EjEx2/api/authentication/logout',  JSON.stringify(this.cookieService.get('x-auth-token')),  httpOptions).pipe(
+    // return this.http.post<any>('http://localhost:8786/logout',  httpOptions).pipe(
       tap(),
       catchError(this.handleError<any>('logout')),
     );
